@@ -14,7 +14,7 @@ export const Field = Type.Object({
 });
 
 export const CompositePrimaryKey = Type.Object({
-  keys: Type.Tuple([Type.String(), Type.String()]),
+  keys: Type.Array(Type.Tuple([Type.String(), Type.String()])),
 });
 
 export const PrimaryKey = Type.Union([
