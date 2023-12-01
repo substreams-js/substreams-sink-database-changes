@@ -1,0 +1,51 @@
+{
+  "name": "@substreams/sink-database-changes",
+  "version": "0.3.0",
+  "description": "Substreams Sink Database Changes",
+  "type": "module",
+  "license": "MIT",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "default": "./dist/index.js",
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./typebox": {
+      "default": "./dist/src/typebox.js",
+      "import": "./dist/src/typebox.js",
+      "types": "./dist/src/typebox.d.ts"
+    },
+    "./zod": {
+      "default": "./dist/src/zod.js",
+      "import": "./dist/src/zod.js",
+      "types": "./dist/src/zod.d.ts"
+    },
+    "./database_pb": {
+      "default": "./dist/src/generated/sf/substreams/sink/database/v1/database_pb.js",
+      "import": "./dist/src/generated/sf/substreams/sink/database/v1/database_pb.js",
+      "types": "./dist/src/generated/sf/substreams/sink/database/v1/database_pb.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "prepublish": "npm run build",
+    "codegen": "buf generate ./proto",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@bufbuild/protobuf": "latest",
+    "@sinclair/typebox": "latest",
+    "zod": "latest"
+  },
+  "devDependencies": {
+    "@bufbuild/buf": "latest",
+    "@bufbuild/protoc-gen-connect-es": "latest",
+    "@bufbuild/protoc-gen-es": "latest",
+    "typescript": "latest",
+    "vitest": "latest"
+  }
+}
