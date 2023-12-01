@@ -17,6 +17,7 @@ export const TableChange = z.object({
   table: z.string(),
   id: z.string(),
   // TO-DO: handle oneof composite_pk
+  // https://github.com/colinhacks/zod#discriminated-unions
   ordinal: z.number(),
   operation: TableChangeOperation,
   fields: z.array(Field),
