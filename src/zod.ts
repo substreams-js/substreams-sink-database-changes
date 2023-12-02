@@ -22,7 +22,7 @@ export const PrimaryKey = z.union([
     id: z.string(),
   }),
   z.object({
-    composite_pk: CompositePrimaryKey,
+    compositePk: CompositePrimaryKey,
   })
 ]);
 
@@ -38,7 +38,7 @@ export const TableChange = z.union([
   // Composite primary key
   z.object({
     table: z.string(),
-    composite_pk: CompositePrimaryKey,
+    compositePk: CompositePrimaryKey,
     ordinal: z.number(),
     operation: TableChangeOperation,
     fields: z.array(Field),

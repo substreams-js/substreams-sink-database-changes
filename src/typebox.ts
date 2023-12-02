@@ -22,7 +22,7 @@ export const PrimaryKey = Type.Union([
     id: Type.String(),
   }),
   Type.Object({
-    composite_pk: CompositePrimaryKey,
+    compositePk: CompositePrimaryKey,
   })
 ]);
 
@@ -38,7 +38,7 @@ export const TableChange = Type.Union([
   // Composite primary key
   Type.Object({
     table: Type.String(),
-    composite_pk: CompositePrimaryKey,
+    compositePk: CompositePrimaryKey,
     ordinal: Type.Number(),
     operation: TableChangeOperation,
     fields: Type.Array(Field),
