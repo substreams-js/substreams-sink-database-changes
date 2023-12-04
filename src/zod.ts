@@ -19,31 +19,21 @@ export const CompositePrimaryKey = z.object({
 
 export const PrimaryKey = z.union([
   z.object({
-    id: z.string(),
+    pk: z.string(),
   }),
   z.object({
     compositePk: CompositePrimaryKey,
-  })
+  }),
 ]);
 
-export const TableChange = z.union([
-  // Simple primary key
-  z.object({
+export const TableChange = z
+  .object({
     table: z.string(),
-    id: z.string(),
-    ordinal: z.number(),
-    operation: TableChangeOperation,
-    fields: z.array(Field),
-  }),
-  // Composite primary key
-  z.object({
-    table: z.string(),
-    compositePk: CompositePrimaryKey,
-    ordinal: z.number(),
+    ordinal: z.string().transform((str) => parseInt(str)),
     operation: TableChangeOperation,
     fields: z.array(Field),
   })
-]);
+  .and(PrimaryKey);
 
 export const DatabaseChanges = z.object({
   tableChanges: z.array(TableChange),
