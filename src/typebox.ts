@@ -19,30 +19,21 @@ export const CompositePrimaryKey = Type.Object({
 
 export const PrimaryKey = Type.Union([
   Type.Object({
-    id: Type.String(),
+    pk: Type.String(),
   }),
   Type.Object({
     compositePk: CompositePrimaryKey,
-  })
+  }),
 ]);
 
-export const TableChange = Type.Union([
-  // Simple primary key
+export const TableChange = Type.Intersect([
   Type.Object({
     table: Type.String(),
-    id: Type.String(),
-    ordinal: Type.Number(),
+    ordinal: Type.String(),
     operation: TableChangeOperation,
     fields: Type.Array(Field),
   }),
-  // Composite primary key
-  Type.Object({
-    table: Type.String(),
-    compositePk: CompositePrimaryKey,
-    ordinal: Type.Number(),
-    operation: TableChangeOperation,
-    fields: Type.Array(Field),
-  }),
+  PrimaryKey,
 ]);
 
 export const DatabaseChanges = Type.Object({
