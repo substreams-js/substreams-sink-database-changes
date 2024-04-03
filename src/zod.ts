@@ -9,8 +9,8 @@ export const TableChangeOperation = z.enum([
 
 export const Field = z.object({
   name: z.string(),
-  newValue: z.string(),
-  oldValue: z.string(),
+  newValue: z.optional(z.string()),
+  oldValue: z.optional(z.string()),
 });
 
 export const CompositePrimaryKey = z.object({
@@ -29,7 +29,7 @@ export const PrimaryKey = z.union([
 export const TableChange = z
   .object({
     table: z.string(),
-    ordinal: z.string().transform((str) => parseInt(str)),
+    ordinal: z.optional(z.string().transform((str) => parseInt(str))),
     operation: TableChangeOperation,
     fields: z.array(Field),
   })
