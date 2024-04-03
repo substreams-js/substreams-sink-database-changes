@@ -46,6 +46,7 @@
     "@bufbuild/buf": "latest",
     "@bufbuild/protoc-gen-connect-es": "latest",
     "@bufbuild/protoc-gen-es": "latest",
+    "@types/node": "^20.12.4",
     "typescript": "latest",
     "vitest": "latest"
   }
