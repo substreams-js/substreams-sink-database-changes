@@ -1,20 +1,26 @@
 import { Static, Type } from "@sinclair/typebox";
 
 export const TableChangeOperation = Type.Enum({
-  UNSPECIFIED: "OPERATION_UNSPECIFIED",
-  CREATE: "OPERATION_CREATE",
-  UPDATE: "OPERATION_UPDATE",
-  DELETE: "OPERATION_DELETE",
+  OPERATION_UNSPECIFIED: "OPERATION_UNSPECIFIED",
+  OPERATION_CREATE: "OPERATION_CREATE",
+  OPERATION_UPDATE: "OPERATION_UPDATE",
+  OPERATION_DELETE: "OPERATION_DELETE",
+
+  // legacy operations
+  UNSET: "UNSET",
+  CREATE: "CREATE",
+  UPDATE: "UPDATE",
+  DELETE: "DELETE",
 });
 
 export const Field = Type.Object({
   name: Type.String(),
-  newValue: Type.String(),
-  oldValue: Type.String(),
+  newValue: Type.Optional(Type.String()),
+  oldValue: Type.Optional(Type.String()),
 });
 
 export const CompositePrimaryKey = Type.Object({
-  keys: Type.Array(Type.Tuple([Type.String(), Type.String()])),
+  keys: Type.Record(Type.String(), Type.String()),
 });
 
 export const PrimaryKey = Type.Union([
@@ -29,7 +35,7 @@ export const PrimaryKey = Type.Union([
 export const TableChange = Type.Intersect([
   Type.Object({
     table: Type.String(),
-    ordinal: Type.String(),
+    ordinal: Type.Optional(Type.String()),
     operation: TableChangeOperation,
     fields: Type.Array(Field),
   }),
