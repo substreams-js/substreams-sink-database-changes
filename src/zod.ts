@@ -20,7 +20,7 @@ export const Field = z.object({
 });
 
 export const CompositePrimaryKey = z.object({
-  keys: z.array(z.tuple([z.string(), z.string()])),
+  keys: z.record(z.string()),
 });
 
 export const PrimaryKey = z.union([
