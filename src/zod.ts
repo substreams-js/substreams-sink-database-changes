@@ -5,6 +5,12 @@ export const TableChangeOperation = z.enum([
   "OPERATION_CREATE",
   "OPERATION_UPDATE",
   "OPERATION_DELETE",
+
+  // legacy operations
+  "UNSET",
+  "CREATE",
+  "UPDATE",
+  "DELETE",
 ]);
 
 export const Field = z.object({
@@ -14,7 +20,7 @@ export const Field = z.object({
 });
 
 export const CompositePrimaryKey = z.object({
-  keys: z.array(z.tuple([z.string(), z.string()])),
+  keys: z.record(z.string()),
 });
 
 export const PrimaryKey = z.union([
@@ -29,7 +35,7 @@ export const PrimaryKey = z.union([
 export const TableChange = z
   .object({
     table: z.string(),
-    ordinal: z.optional(z.string().transform((str) => parseInt(str))),
+    ordinal: z.optional(z.string().transform((str: string) => parseInt(str))),
     operation: TableChangeOperation,
     fields: z.array(Field),
   })

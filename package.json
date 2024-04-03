@@ -1,6 +1,6 @@
 {
   "name": "@substreams/sink-database-changes",
-  "version": "0.3.5",
+  "version": "0.3.6",
   "description": "Substreams Sink Database Changes",
   "type": "module",
   "license": "MIT",
@@ -46,6 +46,7 @@
     "@bufbuild/buf": "latest",
     "@bufbuild/protoc-gen-connect-es": "latest",
     "@bufbuild/protoc-gen-es": "latest",
+    "@types/node": "^20.12.4",
     "typescript": "latest",
     "vitest": "latest"
   }
