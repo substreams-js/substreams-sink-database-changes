@@ -1,6 +1,6 @@
 {
   "name": "@substreams/sink-database-changes",
-  "version": "0.3.5",
+  "version": "0.3.6",
   "description": "Substreams Sink Database Changes",
   "type": "module",
   "license": "MIT",
