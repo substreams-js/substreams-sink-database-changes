@@ -35,7 +35,7 @@ export const PrimaryKey = z.union([
 export const TableChange = z
   .object({
     table: z.string(),
-    ordinal: z.optional(z.string().transform((str) => parseInt(str))),
+    ordinal: z.optional(z.string().transform((str: string) => parseInt(str))),
     operation: TableChangeOperation,
     fields: z.array(Field),
   })
