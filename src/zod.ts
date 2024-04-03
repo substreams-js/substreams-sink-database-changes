@@ -5,6 +5,12 @@ export const TableChangeOperation = z.enum([
   "OPERATION_CREATE",
   "OPERATION_UPDATE",
   "OPERATION_DELETE",
+
+  // legacy operations
+  "UNSET",
+  "CREATE",
+  "UPDATE",
+  "DELETE",
 ]);
 
 export const Field = z.object({
